@@ -1,8 +1,6 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { Post } from '../src/interfaces'
-import { getAllPosts } from '../src/utils/posts'
+import type { GetStaticProps } from 'next'
+import { Post } from 'src/interfaces'
+import { getAllPosts } from 'src/utils/posts'
 
 export default function Home({ posts }: { posts: Post[] }) {
   return (

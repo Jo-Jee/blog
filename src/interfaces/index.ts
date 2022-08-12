@@ -1,6 +1,8 @@
 export interface FrontMatter {
   title: string
   summary: string
+  topic: string
+  id: string
   tags: string[]
   date: string
 }
