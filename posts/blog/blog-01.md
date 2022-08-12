@@ -19,4 +19,4 @@ tags:
 마크다운 문서로 포스트를 관리하고 모듈은 [next-mdx-remote](https://www.npmjs.com/package/next-mdx-remote)를 사용할 예정이다. jekyll에서 사용하는 것처럼 포스트 정보를 관리하기 위해 [front-matter](https://www.npmjs.com/package/front-matter)를 사용할 예정이다.
 
 ## 마치며
-첫 포스트인 만큼 테스트 성격도 조금 있어서 첫 포스팅은 짧게 마치도록 하겠다. 이후에도 꾸준히 개발할 수 있기를
+첫 포스트인 만큼 테스트 성격도 조금 있어서 첫 포스팅은 짧게 마치도록 하겠다. 이후에도 꾸준히 개발할 수 있었으면 좋겠다.

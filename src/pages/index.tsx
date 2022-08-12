@@ -3,8 +3,16 @@ import { useEffect, useState } from 'react'
 import PostList from 'src/components/PostList'
 import { FrontMatter } from 'src/interfaces'
 
+interface Response {
+  frontMatters: FrontMatter[]
+  total: number
+}
+
 export default function Home() {
-  const [frontMatters, setFrontMatters] = useState<FrontMatter[]>([])
+  const [res, setRes] = useState<Response>({
+    frontMatters: [],
+    total: 0,
+  })
 
   useEffect(() => {
     axios
@@ -14,13 +22,13 @@ export default function Home() {
         },
       })
       .then((res) => {
-        setFrontMatters(res.data.posts)
+        setRes(res.data)
       })
   }, [])
 
   return (
     <div>
-      <PostList frontMatters={frontMatters} />
+      <PostList {...res} />
     </div>
   )
 }

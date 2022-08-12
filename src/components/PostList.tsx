@@ -22,8 +22,10 @@ function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
 
 export default function PostList({
   frontMatters,
+  total,
 }: {
   frontMatters: FrontMatter[]
+  total: number
 }) {
   return (
     <div>

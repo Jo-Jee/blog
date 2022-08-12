@@ -3,7 +3,8 @@ import { FrontMatter } from 'src/interfaces'
 import { getAllPosts } from 'src/utils/posts'
 
 interface Res {
-  posts: FrontMatter[]
+  frontMatters: FrontMatter[]
+  total: number
 }
 
 export default function handler(
@@ -26,5 +27,8 @@ export default function handler(
     .slice(page * size, size)
     .map((post) => post.frontMatter)
 
-  res.status(200).json({ posts: frontMatters })
+  res.status(200).json({
+    frontMatters: frontMatters,
+    total: posts.length,
+  })
 }

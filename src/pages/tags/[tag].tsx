@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GetStaticPaths, GetStaticPropsContext } from 'next'
+import { GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { useEffect, useState } from 'react'
 import PostList from 'src/components/PostList'
@@ -16,8 +16,16 @@ interface PathResult {
   }
 }
 
+interface Response {
+  frontMatters: FrontMatter[]
+  total: number
+}
+
 export default function TagPostPage({ tag }: { tag: string }) {
-  const [frontMatters, setFrontMatters] = useState<FrontMatter[]>([])
+  const [res, setRes] = useState<Response>({
+    frontMatters: [],
+    total: 0,
+  })
 
   useEffect(() => {
     axios
@@ -28,13 +36,13 @@ export default function TagPostPage({ tag }: { tag: string }) {
         },
       })
       .then((res) => {
-        setFrontMatters(res.data.posts)
+        setRes(res.data)
       })
   }, [tag])
 
   return (
     <div>
-      <PostList frontMatters={frontMatters} />
+      <PostList {...res} />
     </div>
   )
 }
