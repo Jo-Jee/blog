@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Tag } from 'src/interfaces'
 import { getAllTags } from 'src/utils/posts'
 
@@ -6,10 +7,12 @@ export default function TagPage({ tags }: { tags: Tag[] }) {
     <>
       {tags.map((tag) => {
         return (
-          <div>
-            <span>{tag.name}</span>
-            <span>{tag.count}</span>
-          </div>
+          <Link href={`/tags/${tag.name}`} key={tag.name}>
+            <div>
+              <span>{tag.name}</span>
+              <span>{tag.count}</span>
+            </div>
+          </Link>
         )
       })}
     </>
