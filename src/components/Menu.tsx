@@ -7,8 +7,8 @@ export default function Menu() {
         <a>logo</a>
       </Link>
       <nav className="flex justify-around w-1/5">
-        <Link href="/tags">
-          <a>Tags</a>
+        <Link href="/about">
+          <a>About</a>
         </Link>
       </nav>
     </div>

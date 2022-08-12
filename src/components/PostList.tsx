@@ -49,7 +49,7 @@ export default function PostList({ tag }: { tag?: string }) {
   }, [tag])
 
   return (
-    <div className="container max-w-xl">
+    <div className="container">
       <ul className="divide-y divide-slate-200">
         {res.frontMatters.map((frontMatter) => {
           return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
