@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className="min-h-screen">
       <div className="container flex flex-col min-h-screen mx-auto px-12 max-w-4xl">
         <Menu />
-        <div>{children}</div>
+        <div className="mb-5">{children}</div>
         <Footer />
       </div>
     </div>

@@ -10,9 +10,6 @@ export default function Menu() {
         <Link href="/tags">
           <a>Tags</a>
         </Link>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
       </nav>
     </div>
   )
