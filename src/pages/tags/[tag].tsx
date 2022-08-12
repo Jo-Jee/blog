@@ -1,9 +1,6 @@
-import axios from 'axios'
 import { GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { useEffect, useState } from 'react'
 import PostList from 'src/components/PostList'
-import { FrontMatter } from 'src/interfaces'
 import { getAllTags } from 'src/utils/posts'
 
 interface Params extends ParsedUrlQuery {
@@ -16,33 +13,10 @@ interface PathResult {
   }
 }
 
-interface Response {
-  frontMatters: FrontMatter[]
-  total: number
-}
-
 export default function TagPostPage({ tag }: { tag: string }) {
-  const [res, setRes] = useState<Response>({
-    frontMatters: [],
-    total: 0,
-  })
-
-  useEffect(() => {
-    axios
-      .get('/api/posts', {
-        params: {
-          page: 1,
-          tag: tag,
-        },
-      })
-      .then((res) => {
-        setRes(res.data)
-      })
-  }, [tag])
-
   return (
     <div>
-      <PostList {...res} />
+      <PostList tag={tag} />
     </div>
   )
 }

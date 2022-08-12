@@ -1,5 +1,12 @@
+import axios from 'axios'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { FrontMatter } from 'src/interfaces'
+
+interface Response {
+  frontMatters: FrontMatter[]
+  total: number
+}
 
 function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
   return (
@@ -20,16 +27,28 @@ function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
   )
 }
 
-export default function PostList({
-  frontMatters,
-  total,
-}: {
-  frontMatters: FrontMatter[]
-  total: number
-}) {
+export default function PostList({ tag }: { tag?: string }) {
+  const [res, setRes] = useState<Response>({
+    frontMatters: [],
+    total: 0,
+  })
+
+  useEffect(() => {
+    axios
+      .get('/api/posts', {
+        params: {
+          page: 1,
+          tag: tag,
+        },
+      })
+      .then((res) => {
+        setRes(res.data)
+      })
+  }, [tag])
+
   return (
     <div>
-      {frontMatters.map((frontMatter) => {
+      {res.frontMatters.map((frontMatter) => {
         return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
       })}
     </div>
