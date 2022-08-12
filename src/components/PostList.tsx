@@ -10,12 +10,16 @@ interface Response {
 
 function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
   return (
-    <div>
+    <li className="py-4">
       <Link href={`/posts/${frontMatter.topic}/${frontMatter.id}`}>
-        <a>{frontMatter.title}</a>
+        <a className="group">
+          <div className="text-2xl font-bold group-hover:underline">
+            {frontMatter.title}
+          </div>
+          <div>{frontMatter.summary}</div>
+          <div>{frontMatter.date}</div>
+        </a>
       </Link>
-      <div>{frontMatter.summary}</div>
-      <div>{frontMatter.date}</div>
       {frontMatter.tags.map((tag) => {
         return (
           <Link href={`/tags/${tag}`} key={`${frontMatter.id}-${tag}`}>
@@ -23,7 +27,7 @@ function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
           </Link>
         )
       })}
-    </div>
+    </li>
   )
 }
 
@@ -50,12 +54,10 @@ export default function PostList({ tag }: { tag?: string }) {
   }, [tag])
 
   return (
-    <div>
-      <div>
-        {res.frontMatters.map((frontMatter) => {
-          return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
-        })}
-      </div>
-    </div>
+    <ul className="p-6 divide-y divide-slate-200">
+      {res.frontMatters.map((frontMatter) => {
+        return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
+      })}
+    </ul>
   )
 }
