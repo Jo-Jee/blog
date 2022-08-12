@@ -1,8 +1,8 @@
 ---
-id: blog-04
-title: Next.js 블로그 제작기 (4)
+id: component
+title: 컴포넌트 분리
 date: 2022-07-09
-summary: 재사용성을 위한 컴포넌트 분리 및 태그 페이지 구성
+summary: 첫 홈 화면과 태그별 포스트 화면에서 사용할 포스트 리스트 컴포넌트 분리
 topic: blog
 published: true
 tags:

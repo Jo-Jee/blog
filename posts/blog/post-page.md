@@ -1,8 +1,8 @@
 ---
-id: blog-05
-title: Next.js 블로그 제작기 (5)
+id: post-page
+title: 포스트 페이지 구성
 date: 2022-07-13
-summary: 포스트 페이지 구성
+summary: 포스트 페이지 구성을 위한 요소들
 topic: blog
 published: true
 tags:

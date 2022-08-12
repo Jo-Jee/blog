@@ -1,8 +1,8 @@
 ---
-id: blog-03
-title: Next.js 블로그 제작기 (3)
+id: frontmatter-module
+title: front matter 추출 모듈 결정
 date: 2022-07-08
-summary: front matter 추출 모듈 결정
+summary: front matter 정보를 추출해서 사용하기 위한 라이브러리 모듈 결정
 topic: blog
 published: true
 tags:

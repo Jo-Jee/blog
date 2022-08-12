@@ -1,8 +1,8 @@
 ---
-id: blog-02
-title: Next.js 블로그 제작기 (2)
+id: mdx-library
+title: mdx 라이브러리 결정
 date: 2022-07-04
-summary: 포스트 페이지 구성을 위한 mdx 라이브러리 결정
+summary: 포스트 페이지 마크다운 랜더링을 위한 mdx 라이브러리 결정
 topic: blog
 published: true
 tags:

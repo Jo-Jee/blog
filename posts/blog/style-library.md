@@ -1,8 +1,8 @@
 ---
-id: blog-06
-title: Next.js 블로그 제작기 (6)
+id: style-library
+title: style 라이브러리 비교 및 결정
 date: 2022-07-19
-summary: style 라이브러리 결정
+summary: sass, styled-component, Tailwind css Theme UI 비교
 topic: blog
 published: true
 tags:

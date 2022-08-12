@@ -1,8 +1,8 @@
 ---
-id: blog-01
-title: Next.js 블로그 제작기 (1)
+id: framework-and-module
+title: 블로그 개발 프레임워크 밒 모듈 선정
 date: 2022-06-09
-summary: 블로그 개발을 위한 프레임워크 및 모듈 선정
+summary: 블로그 개발을 위한 프론트엔드 프레임워크 및 마크다운 랜더링 모듈 선정
 topic: blog
 published: true
 tags:
