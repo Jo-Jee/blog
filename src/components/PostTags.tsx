@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Tags({ tags }: { tags: string[] }) {
+export default function PostTags({ tags }: { tags: string[] }) {
   return (
     <div>
       {tags.map((tag) => {

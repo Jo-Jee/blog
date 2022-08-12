@@ -2,7 +2,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 import { FrontMatter } from 'src/interfaces'
-import Tags from './Tags'
+import PostTags from './PostTags'
 
 interface Response {
   frontMatters: FrontMatter[]
@@ -21,7 +21,7 @@ function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
           <div className="text-sm mb-4 text-slate-700">{frontMatter.date}</div>
         </a>
       </Link>
-      <Tags tags={frontMatter.tags} />
+      <PostTags tags={frontMatter.tags} />
     </li>
   )
 }
