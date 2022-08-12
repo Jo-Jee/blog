@@ -5,7 +5,7 @@ import moment from 'moment'
 import { Post, FrontMatter, Tag } from '../interfaces'
 
 export function getAllPosts(): Post[] {
-  const paths = sync(`${process.cwd()}/posts/**/*.mdx`).reverse()
+  const paths = sync(`${process.cwd()}/posts/**/*.md`).reverse()
 
   const posts = paths.map<Post>((path) => {
     const md = fs.readFileSync(path, { encoding: 'utf-8' })
