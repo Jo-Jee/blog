@@ -11,7 +11,7 @@ export function getAllPosts(): Post[] {
     const md = fs.readFileSync(path, { encoding: 'utf-8' })
     const { attributes, body } = frontMatter<FrontMatter>(md)
 
-    if (attributes.published)
+    if (process.env.NODE_ENV === 'development' || attributes.published)
       result.push({
         frontMatter: {
           ...attributes,
