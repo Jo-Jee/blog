@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { FrontMatter } from 'src/interfaces'
 
 interface Response {
@@ -32,6 +32,9 @@ export default function PostList({ tag }: { tag?: string }) {
     frontMatters: [],
     total: 0,
   })
+  const [curPage, setCurPage] = useState(1)
+  const perPage = 5
+  const totalPage = res.total / perPage
 
   useEffect(() => {
     axios
@@ -48,9 +51,11 @@ export default function PostList({ tag }: { tag?: string }) {
 
   return (
     <div>
-      {res.frontMatters.map((frontMatter) => {
-        return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
-      })}
+      <div>
+        {res.frontMatters.map((frontMatter) => {
+          return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
+        })}
+      </div>
     </div>
   )
 }
