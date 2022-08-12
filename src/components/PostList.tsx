@@ -16,8 +16,8 @@ function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
           <div className="text-2xl font-bold group-hover:underline">
             {frontMatter.title}
           </div>
-          <div>{frontMatter.summary}</div>
-          <div className="text-sm my-2">{frontMatter.date}</div>
+          <div className="my-2">{frontMatter.summary}</div>
+          <div className="text-sm mb-4 text-slate-700">{frontMatter.date}</div>
         </a>
       </Link>
       <div>
@@ -58,7 +58,7 @@ export default function PostList({ tag }: { tag?: string }) {
   }, [tag])
 
   return (
-    <div className="container mx-auto max-w-4xl">
+    <div className="container max-w-xl">
       <ul className="p-6 divide-y divide-slate-200">
         {res.frontMatters.map((frontMatter) => {
           return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
