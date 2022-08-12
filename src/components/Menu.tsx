@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function () {
+export default function Menu() {
   return (
     <div className="flex justify-between p-5">
       <Link href="/">
