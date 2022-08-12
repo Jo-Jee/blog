@@ -12,7 +12,7 @@ export function getAllPosts(): Post[] {
     const { attributes, body } = frontMatter<FrontMatter>(md)
 
     const post: Post = {
-      attributes: {
+      frontMatter: {
         ...attributes,
         date: moment(attributes.date).format('yyy-MM-DD'),
       },
@@ -23,4 +23,26 @@ export function getAllPosts(): Post[] {
   })
 
   return posts
+}
+
+export function getAllTags(): Tag[] {
+  const posts = getAllPosts()
+  const tagCountMap = new Map<string, number>()
+
+  posts.map((post) => {
+    post.frontMatter.tags.map((tag) => {
+      const tagCount = tagCountMap.get(tag)
+      tagCount ? tagCountMap.set(tag, tagCount + 1) : tagCountMap.set(tag, 1)
+    })
+  })
+
+  const tags: Tag[] = []
+  tagCountMap.forEach((value, key) => {
+    tags.push({
+      tag: key,
+      count: value,
+    })
+  })
+
+  return tags
 }

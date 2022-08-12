@@ -6,7 +6,7 @@ export interface FrontMatter {
 }
 
 export interface Post {
-  attributes: FrontMatter
+  frontMatter: FrontMatter
   body: string
 }
 

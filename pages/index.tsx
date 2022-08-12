@@ -9,11 +9,11 @@ export default function Home({ posts }: { posts: Post[] }) {
     <div>
       {posts.map((post) => {
         return (
-          <div key={post.attributes.title}>
-            <div>{post.attributes.title}</div>
-            <div>{post.attributes.summary}</div>
-            <div>{post.attributes.date}</div>
-            <div>{post.attributes.tags}</div>
+          <div key={post.frontMatter.title}>
+            <div>{post.frontMatter.title}</div>
+            <div>{post.frontMatter.summary}</div>
+            <div>{post.frontMatter.date}</div>
+            <div>{post.frontMatter.tags}</div>
           </div>
         )
       })}
