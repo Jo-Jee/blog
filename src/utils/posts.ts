@@ -44,7 +44,7 @@ export function getAllTags(): Tag[] {
   const tags: Tag[] = []
   tagCountMap.forEach((value, key) => {
     tags.push({
-      tag: key,
+      name: key,
       count: value,
     })
   })

@@ -1,20 +1,12 @@
 import type { GetStaticProps } from 'next'
+import PostList from 'src/components/PostList'
 import { Post } from 'src/interfaces'
 import { getAllPosts } from 'src/utils/posts'
 
 export default function Home({ posts }: { posts: Post[] }) {
   return (
     <div>
-      {posts.map((post) => {
-        return (
-          <div key={post.frontMatter.title}>
-            <div>{post.frontMatter.title}</div>
-            <div>{post.frontMatter.summary}</div>
-            <div>{post.frontMatter.date}</div>
-            <div>{post.frontMatter.tags}</div>
-          </div>
-        )
-      })}
+      <PostList posts={posts} />
     </div>
   )
 }

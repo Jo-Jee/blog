@@ -13,6 +13,6 @@ export interface Post {
 }
 
 export interface Tag {
-  tag: string
+  name: string
   count: number
 }
