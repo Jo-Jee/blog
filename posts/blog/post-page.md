@@ -9,7 +9,6 @@ tags:
   - nextjs
   - blog
   - pagination
-  - 
 ---
 ## Pagination
 Next.js를 사용하면서 페이지를 나누는 방법을 몇가지 생각 해봤다.

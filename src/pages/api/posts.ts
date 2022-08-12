@@ -13,7 +13,7 @@ export default function handler(
 ) {
   const page = req.query.page ? +req.query.page.toString() - 1 : 0
   const tag = req.query.tag as string
-  let size = 5
+  let size = 10
 
   let posts = getAllPosts()
 

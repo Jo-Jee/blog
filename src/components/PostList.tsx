@@ -17,16 +17,20 @@ function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
             {frontMatter.title}
           </div>
           <div>{frontMatter.summary}</div>
-          <div>{frontMatter.date}</div>
+          <div className="text-sm my-2">{frontMatter.date}</div>
         </a>
       </Link>
-      {frontMatter.tags.map((tag) => {
-        return (
-          <Link href={`/tags/${tag}`} key={`${frontMatter.id}-${tag}`}>
-            <a>{tag}</a>
-          </Link>
-        )
-      })}
+      <div>
+        {frontMatter.tags.map((tag) => {
+          return (
+            <Link href={`/tags/${tag}`} key={`${frontMatter.id}-${tag}`}>
+              <a className="mx-1 first:ml-0">
+                <span className="bg-slate-200 rounded p-1 text-xs">{tag}</span>
+              </a>
+            </Link>
+          )
+        })}
+      </div>
     </li>
   )
 }
@@ -54,10 +58,12 @@ export default function PostList({ tag }: { tag?: string }) {
   }, [tag])
 
   return (
-    <ul className="p-6 divide-y divide-slate-200">
-      {res.frontMatters.map((frontMatter) => {
-        return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
-      })}
-    </ul>
+    <div className="container mx-auto max-w-4xl">
+      <ul className="p-6 divide-y divide-slate-200">
+        {res.frontMatters.map((frontMatter) => {
+          return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
+        })}
+      </ul>
+    </div>
   )
 }
