@@ -5,6 +5,7 @@ export interface FrontMatter {
   id: string
   tags: string[]
   date: string
+  published: boolean
 }
 
 export interface Post {

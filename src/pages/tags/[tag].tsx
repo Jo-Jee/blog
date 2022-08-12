@@ -1,27 +1,56 @@
-import { GetStaticPropsContext } from 'next'
+import axios from 'axios'
+import { GetStaticPaths, GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+import { useEffect, useState } from 'react'
 import PostList from 'src/components/PostList'
-import { Post } from 'src/interfaces'
-import { getAllPosts, getAllTags } from 'src/utils/posts'
+import { FrontMatter } from 'src/interfaces'
+import { getAllTags } from 'src/utils/posts'
 
-export default function TagPostPage({ posts }: { posts: Post[] }) {
-  return <PostList posts={posts} />
+interface Params extends ParsedUrlQuery {
+  tag: string
 }
 
-interface IParams extends ParsedUrlQuery {
-  tag: string
+interface PathResult {
+  params: {
+    tag: string
+  }
+}
+
+export default function TagPostPage({ tag }: { tag: string }) {
+  const [frontMatters, setFrontMatters] = useState<FrontMatter[]>([])
+
+  useEffect(() => {
+    axios
+      .get('/api/posts', {
+        params: {
+          page: 1,
+          tag: tag,
+        },
+      })
+      .then((res) => {
+        setFrontMatters(res.data.posts)
+      })
+  }, [tag])
+
+  return (
+    <div>
+      <PostList frontMatters={frontMatters} />
+    </div>
+  )
 }
 
 export function getStaticPaths() {
   const tags = getAllTags()
 
-  const paths = tags.map((tag) => {
-    return {
-      params: {
-        tag: tag.name,
-      },
-    }
-  })
+  const paths = tags.reduce((result: PathResult[], tag) => {
+    if (tag.name)
+      result.push({
+        params: {
+          tag: tag.name,
+        },
+      })
+    return result
+  }, [])
 
   return {
     paths: paths,
@@ -30,17 +59,12 @@ export function getStaticPaths() {
 }
 
 export function getStaticProps({ params }: GetStaticPropsContext) {
-  const posts = getAllPosts()
-  const { tag } = params as IParams
+  const { tag } = params as Params
 
-  const taggedPosts = posts.filter((post) =>
-    post.frontMatter.tags.includes(tag)
-  )
-
-  if (taggedPosts)
+  if (tag)
     return {
       props: {
-        posts: taggedPosts,
+        tag: tag,
       },
     }
   else

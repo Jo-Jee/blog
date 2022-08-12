@@ -1,17 +1,17 @@
 import Link from 'next/link'
-import { Post } from 'src/interfaces'
+import { FrontMatter } from 'src/interfaces'
 
-function PostRow({ post }: { post: Post }) {
+function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
   return (
     <div>
-      <Link href={`/posts/${post.frontMatter.topic}/${post.frontMatter.id}`}>
-        <a>{post.frontMatter.title}</a>
+      <Link href={`/posts/${frontMatter.topic}/${frontMatter.id}`}>
+        <a>{frontMatter.title}</a>
       </Link>
-      <div>{post.frontMatter.summary}</div>
-      <div>{post.frontMatter.date}</div>
-      {post.frontMatter.tags.map((tag) => {
+      <div>{frontMatter.summary}</div>
+      <div>{frontMatter.date}</div>
+      {frontMatter.tags.map((tag) => {
         return (
-          <Link href={`/tags/${tag}`} key={`${post.frontMatter.id}-${tag}`}>
+          <Link href={`/tags/${tag}`} key={`${frontMatter.id}-${tag}`}>
             <a>{tag}</a>
           </Link>
         )
@@ -20,11 +20,15 @@ function PostRow({ post }: { post: Post }) {
   )
 }
 
-export default function PostList({ posts }: { posts: Post[] }) {
+export default function PostList({
+  frontMatters,
+}: {
+  frontMatters: FrontMatter[]
+}) {
   return (
     <div>
-      {posts.map((post) => {
-        return <PostRow post={post} key={post.frontMatter.id} />
+      {frontMatters.map((frontMatter) => {
+        return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
       })}
     </div>
   )

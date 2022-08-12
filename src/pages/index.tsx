@@ -1,22 +1,26 @@
-import type { GetStaticProps } from 'next'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import PostList from 'src/components/PostList'
-import { Post } from 'src/interfaces'
-import { getAllPosts } from 'src/utils/posts'
+import { FrontMatter } from 'src/interfaces'
 
-export default function Home({ posts }: { posts: Post[] }) {
+export default function Home() {
+  const [frontMatters, setFrontMatters] = useState<FrontMatter[]>([])
+
+  useEffect(() => {
+    axios
+      .get('/api/posts', {
+        params: {
+          page: 1,
+        },
+      })
+      .then((res) => {
+        setFrontMatters(res.data.posts)
+      })
+  }, [])
+
   return (
     <div>
-      <PostList posts={posts} />
+      <PostList frontMatters={frontMatters} />
     </div>
   )
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const posts = getAllPosts()
-
-  return {
-    props: {
-      posts: posts,
-    },
-  }
 }

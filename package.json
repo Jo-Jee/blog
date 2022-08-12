@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/glob": "^7.2.0",
     "@types/moment": "^2.13.0",
+    "axios": "^0.27.2",
     "front-matter": "^4.0.2",
     "glob": "^8.0.3",
     "moment": "^2.29.3",
