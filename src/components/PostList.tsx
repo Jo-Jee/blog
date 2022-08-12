@@ -2,6 +2,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useCallback, useEffect, useState } from 'react'
 import { FrontMatter } from 'src/interfaces'
+import Tags from './Tags'
 
 interface Response {
   frontMatters: FrontMatter[]
@@ -20,17 +21,7 @@ function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
           <div className="text-sm mb-4 text-slate-700">{frontMatter.date}</div>
         </a>
       </Link>
-      <div>
-        {frontMatter.tags.map((tag) => {
-          return (
-            <Link href={`/tags/${tag}`} key={`${frontMatter.id}-${tag}`}>
-              <a className="mx-1 first:ml-0">
-                <span className="bg-slate-200 rounded p-1 text-xs">{tag}</span>
-              </a>
-            </Link>
-          )
-        })}
-      </div>
+      <Tags tags={frontMatter.tags} />
     </li>
   )
 }
@@ -59,7 +50,7 @@ export default function PostList({ tag }: { tag?: string }) {
 
   return (
     <div className="container max-w-xl">
-      <ul className="p-6 divide-y divide-slate-200">
+      <ul className="divide-y divide-slate-200">
         {res.frontMatters.map((frontMatter) => {
           return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
         })}

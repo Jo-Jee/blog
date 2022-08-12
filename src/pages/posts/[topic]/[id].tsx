@@ -4,6 +4,7 @@ import { FrontMatter } from 'interfaces'
 import { getAllPosts } from 'src/utils/posts'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
+import Tags from 'src/components/Tags'
 
 export default function PostPage({
   frontMatter,
@@ -13,12 +14,16 @@ export default function PostPage({
   mdxSource: MDXRemoteSerializeResult
 }) {
   return (
-    <>
-      <div>{frontMatter.title}</div>
-      <div>{frontMatter.date}</div>
-      <MDXRemote {...mdxSource} />
-      <div>{frontMatter.tags}</div>
-    </>
+    <div>
+      <h1 className="text-4xl font-black my-5">{frontMatter.title}</h1>
+      <p className="my-5 text-sm text-slate-700">{frontMatter.date}</p>
+      <div className="prose">
+        <MDXRemote {...mdxSource} />
+      </div>
+      <div className="my-5 pt-5 border-t border-slate-200">
+        <Tags tags={frontMatter.tags} />
+      </div>
+    </div>
   )
 }
 
