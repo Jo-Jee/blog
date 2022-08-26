@@ -2,15 +2,17 @@ import Link from 'next/link'
 
 export default function Menu() {
   return (
-    <div className="flex justify-between py-10">
-      <Link href="/">
-        <a>logo</a>
-      </Link>
-      <nav className="flex justify-around w-1/5">
-        <Link href="/about">
-          <a>About</a>
+    <div className="border-b w-full bg-white">
+      <div className="flex justify-between p-5 max-w-4xl m-auto">
+        <Link href="/">
+          <a className="font-bold text-2xl">Cozyband</a>
         </Link>
-      </nav>
+        <nav className="flex justify-between">
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+        </nav>
+      </div>
     </div>
   )
 }

@@ -4,12 +4,12 @@ import Menu from './Menu'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen">
-      <div className="container flex flex-col min-h-screen mx-auto px-12 max-w-4xl">
-        <Menu />
-        <div className="mb-5">{children}</div>
-        <Footer />
+    <div className="flex flex-col min-h-screen">
+      <Menu />
+      <div className="container flex flex-col mx-auto px-5 max-w-4xl">
+        {children}
       </div>
+      <Footer />
     </div>
   )
 }
