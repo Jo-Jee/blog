@@ -14,7 +14,7 @@ function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
     <li className="py-4">
       <Link href={`/posts/${frontMatter.topic}/${frontMatter.id}`}>
         <a className="group">
-          <div className="text-2xl font-bold group-hover:underline">
+          <div className="text-3xl font-extrabold group-hover:underline">
             {frontMatter.title}
           </div>
           <div className="my-2">{frontMatter.summary}</div>
