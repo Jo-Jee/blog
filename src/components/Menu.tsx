@@ -5,7 +5,7 @@ export default function Menu() {
     <div className="border-b w-full bg-white">
       <div className="flex justify-between p-5 max-w-4xl m-auto">
         <Link href="/">
-          <a className="font-bold text-2xl">Cozyband</a>
+          <a className="font-bold text-2xl">JoJee</a>
         </Link>
         <nav className="flex justify-between">
           <Link href="/about">

@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Head>
-        <title>Cozyband 개발블로그</title>
+        <title>JoJee Blog</title>
       </Head>
       <Component {...pageProps} />
     </Layout>
