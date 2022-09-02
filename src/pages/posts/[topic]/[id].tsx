@@ -25,7 +25,7 @@ export default function PostPage({
           <PostTags tags={frontMatter.tags} />
         </div>
         <p className="my-5 text-sm text-slate-700">{frontMatter.date}</p>
-        <div className="prose">
+        <div className="max-w-none prose">
           <MDXRemote {...mdxSource} />
         </div>
       </div>
