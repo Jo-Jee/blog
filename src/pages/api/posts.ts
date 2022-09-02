@@ -17,15 +17,16 @@ export default function handler(
 
   let frontMatters: FrontMatter[] = []
   let posts = getAllPosts()
+
+  if (tag)
+    posts = posts.filter((post) => {
+      if (post.frontMatter.tags.includes(tag)) return true
+      return false
+    })
+
   const total = Math.floor(posts.length / size) + 1
 
   if (page > -1 && page < total) {
-    if (tag)
-      posts = posts.filter((post) => {
-        if (post.frontMatter.tags.includes(tag)) return true
-        return false
-      })
-
     frontMatters = posts
       .slice(page * size, page * size + size)
       .map((post) => post.frontMatter)

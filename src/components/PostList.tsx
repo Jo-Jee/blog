@@ -39,13 +39,13 @@ export default function PostList({ tag }: { tag?: string }) {
     ([entry]: IntersectionObserverEntry[]) => {
       if (!isLoading && entry.isIntersecting) {
         setPage((prev) => prev + 1)
-        setIsLoading(true)
       }
     },
     []
   )
 
   useEffect(() => {
+    console.log(page)
     axios
       .get('/api/posts', {
         params: {
@@ -53,7 +53,27 @@ export default function PostList({ tag }: { tag?: string }) {
           tag: tag,
         },
       })
-      .then((res) => {
+      .then(async (res) => {
+        await setIsLoading(true)
+
+        setPostsData(res.data)
+
+        setIsLoading(false)
+      })
+  }, [tag])
+
+  useEffect(() => {
+    console.log(page)
+    axios
+      .get('/api/posts', {
+        params: {
+          page: page,
+          tag: tag,
+        },
+      })
+      .then(async (res) => {
+        await setIsLoading(true)
+
         setPostsData({
           frontMatters: [...postsData.frontMatters, ...res.data.frontMatters],
           total: res.data.total,
@@ -61,7 +81,7 @@ export default function PostList({ tag }: { tag?: string }) {
 
         setIsLoading(false)
       })
-  }, [tag, page])
+  }, [page])
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleEedOfPost, {
