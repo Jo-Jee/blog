@@ -50,5 +50,10 @@ export function getAllTags(): Tag[] {
     })
   })
 
+  tags.sort((t1, t2) => {
+    if (t1.count < t2.count) return 1
+    return -1
+  })
+
   return tags
 }
