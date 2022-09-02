@@ -17,7 +17,7 @@ export default function TagPostPage({ tag }: { tag: string }) {
   return (
     <div>
       <h1 className="text-4xl font-bold mb-7"># {tag}</h1>
-      <PostList tag={tag} />
+      <PostList tag={tag} key={tag} />
     </div>
   )
 }

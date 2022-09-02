@@ -7,7 +7,7 @@ export default function Home({ tags }: { tags: Tag[] }) {
   return (
     <div className="flex justify-between">
       <PostList />
-      <TagList tags={tags} />
+      <TagList tags={tags} key={''} />
     </div>
   )
 }

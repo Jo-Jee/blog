@@ -45,25 +45,7 @@ export default function PostList({ tag }: { tag?: string }) {
   )
 
   useEffect(() => {
-    console.log(page)
-    axios
-      .get('/api/posts', {
-        params: {
-          page: page,
-          tag: tag,
-        },
-      })
-      .then(async (res) => {
-        await setIsLoading(true)
-
-        setPostsData(res.data)
-
-        setIsLoading(false)
-      })
-  }, [tag])
-
-  useEffect(() => {
-    console.log(page)
+    if (page < 1) return
     axios
       .get('/api/posts', {
         params: {
