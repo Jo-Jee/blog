@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { FrontMatter } from 'src/interfaces'
+import { FrontMatter, Post } from 'src/interfaces'
 import { getAllPosts } from 'src/utils/posts'
 
 interface Res {
@@ -15,20 +15,24 @@ export default function handler(
   const tag = req.query.tag as string
   let size = 10
 
+  let frontMatters: FrontMatter[] = []
   let posts = getAllPosts()
+  const total = Math.floor(posts.length / size) + 1
 
-  if (tag)
-    posts = posts.filter((post) => {
-      if (post.frontMatter.tags.includes(tag)) return true
-      return false
-    })
+  if (page > -1 && page < total) {
+    if (tag)
+      posts = posts.filter((post) => {
+        if (post.frontMatter.tags.includes(tag)) return true
+        return false
+      })
 
-  const frontMatters = posts
-    .slice(page * size, size)
-    .map((post) => post.frontMatter)
+    frontMatters = posts
+      .slice(page * size, page * size + size)
+      .map((post) => post.frontMatter)
+  }
 
   res.status(200).json({
     frontMatters: frontMatters,
-    total: posts.length,
+    total: total,
   })
 }
