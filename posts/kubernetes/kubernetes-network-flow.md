@@ -4,7 +4,7 @@ title: Kubernetes Network flow
 date: 2022-08-11
 summary: Kubernetes의 네트워크 흐름의 전체적인 구조를 알아본다.
 topic: kubernetes
-published: false
+published: true
 tags:
   - kubernetes
   - network

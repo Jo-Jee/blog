@@ -4,7 +4,7 @@ title: traefik ingress에 https적용
 date: 2022-09-04
 summary: k3s 기본 ingress인 traefik ingress에 https를 적용 해본다.
 topic: k3s
-published: false
+published: true
 tags:
   - kubernetes
   - k3s

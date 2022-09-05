@@ -4,7 +4,7 @@ title: k3s란?
 date: 2022-09-03
 summary: k3s를 도입하게 된 이유를 특징들을 통해 알아보자
 topic: k3s
-published: false
+published: true
 tags:
   - kubernetes
   - k3s

@@ -4,7 +4,7 @@ title: GitOps 개념 및 도구
 date: 2022-01-19
 summary: GitOps의 개념에 대해 알아보고 가장 유명한 도구인 ArgoCD와 Flux의 장단점을 비교해본다.
 topic: kubernetes
-published: false
+published: true
 tags:
   - kubernetes
   - gitops
