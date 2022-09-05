@@ -3,7 +3,7 @@ id: what-is-terraform
 title: Terraform이란?
 date: 2022-07-30
 summary: iac와 Terraform에 대해 간단히 알아보자
-topic: iac
+topic: terraform
 published: true
 tags:
   - iac

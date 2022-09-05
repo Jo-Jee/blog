@@ -3,7 +3,7 @@ id: install-terraform
 title: Terraform 설치 및 환경구성
 date: 2022-08-13
 summary: Terraform을 설치하고 코드작성 환경을 구성한다.
-topic: iac
+topic: terraform
 published: true
 tags:
   - iac
@@ -42,5 +42,5 @@ provider "aws" {
 terraform init
 ```
 
-그러면 terraform이 aws관련 플러그인들을 설치한다. 이제 테라폼을 학습할 준비가 됐다.
+그러면 terraform이 aws관련 플러그인들을 설치한다. 이제 Terraform을 학습할 준비가 됐다.
  
