@@ -1,7 +1,7 @@
 ---
 id: kubernetes-structure
 title: Kubernetes 구조
-date: 2022-08-25
+date: 2021-09-30
 summary: Kubernetes의 구조와 구성 요소들을 통해 pod이 배포, 관리되는 플로우를 알아본다.
 topic: kubernetes
 published: true
