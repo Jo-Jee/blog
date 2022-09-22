@@ -4,7 +4,7 @@ title: Operator pattern
 date: 2022-09-22
 summary: Kubernetes operator에 대해 알아본다
 topic: kubernetes
-published: false
+published: true
 tags:
   - kubernetes
   - k8s
