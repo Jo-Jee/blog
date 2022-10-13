@@ -17,7 +17,10 @@ export default function PostPage({
   return (
     <>
       <Head>
-        <title>JoJee - {frontMatter.title}</title>
+        <title>{frontMatter.title} - JoJee</title>
+        <meta name="keywords" content={frontMatter.tags.join(', ')} />
+        <meta name="author" content="JoJee" />
+        <meta name="description" content={frontMatter.summary} />
       </Head>
       <div>
         <h1 className="text-4xl font-black my-5">{frontMatter.title}</h1>

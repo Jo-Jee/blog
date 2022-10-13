@@ -8,6 +8,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Layout>
       <Head>
         <title>JoJee Blog</title>
+        <meta name="keywords" content="jojee, blog" />
+        <meta name="author" content="JoJee" />
+        <meta name="description" content="개발자 JoJee의 블로그입니다" />
       </Head>
       <Component {...pageProps} />
     </Layout>
