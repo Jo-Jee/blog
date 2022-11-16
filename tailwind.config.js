@@ -5,7 +5,16 @@ module.exports = {
     './src/components/**/*.tsx',
   ],
   theme: {
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'code::after': false,
+            'code::before': false
+          }
+        }
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/typography')
