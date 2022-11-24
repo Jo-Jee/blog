@@ -21,7 +21,8 @@ tags:
 
 ## next-mdx-enhanced
 hashicorp에서 만들었고 현재는 개량한 버전인 next-mdx-remote 사용을 권장한다.
-##next-mdx-remote
+
+## next-mdx-remote
 next-mdx-remote는 위에서 말했듯 next-mdx-enhanced의 개량버전 같은 느낌이다. 하지만 사용법은 많이 다른데 위 프로젝트들이 .mdx파일을 직접 페이지로 만들고 레이아웃을 지정하는 느낌이라면 이 라이브러리는 페이지에서 직접 .mdx파일의 내용을 불러오고 랜더링하는 느낌이라서 프로젝트에 추가 설정도 필요없고 간편했다. 또 커스터마이징이 편하다는 장점도 있었다.
 
 ## mdx-bundler
