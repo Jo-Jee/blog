@@ -18,9 +18,10 @@
     "glob": "^8.0.3",
     "moment": "^2.29.3",
     "next": "12.1.6",
-    "next-mdx-remote": "^4.0.3",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-markdown": "^8.0.4",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "17.0.41",

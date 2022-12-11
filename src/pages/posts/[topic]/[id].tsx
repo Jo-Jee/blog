@@ -2,17 +2,17 @@ import { GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { FrontMatter } from 'interfaces'
 import { getAllPosts } from 'src/utils/posts'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
 import PostTags from 'src/components/PostTags'
 import Head from 'next/head'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 export default function PostPage({
   frontMatter,
-  mdxSource,
+  body,
 }: {
   frontMatter: FrontMatter
-  mdxSource: MDXRemoteSerializeResult
+  body: string
 }) {
   return (
     <>
@@ -29,7 +29,7 @@ export default function PostPage({
         </div>
         <p className="my-5 text-sm text-slate-700">{frontMatter.date}</p>
         <div className="max-w-none prose">
-          <MDXRemote {...mdxSource} />
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
         </div>
       </div>
     </>
@@ -66,11 +66,10 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   const post = posts.find((p) => p.frontMatter.id === id)
 
   if (post) {
-    const mdxSource = await serialize(post.body)
     return {
       props: {
         frontMatter: post.frontMatter,
-        mdxSource: mdxSource,
+        body: post.body,
       },
     }
   } else {

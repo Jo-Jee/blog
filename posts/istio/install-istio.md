@@ -27,7 +27,12 @@ mv istio-1.15.3/bin/istioctl /usr/local/bin
 
 ## istio 설치
 istioctl은 profile을 여러개 제공한다. 각 profile의 차이점은 아래 표와 같다.
-![istio profile](/image/istio/istio-profile-table.png)
+| Core components      | default | demo | minimal | remote | empty | preview |
+|----------------------|:-------:|:----:|:-------:|:------:|:-----:|:-------:|
+| istio-egressgateway  |         | O    |         |        |       |         |
+| istio-ingressgateway | O       | O    |         |        |       | O       |
+| istiod               | O       | O    | O       |        |       | O       |
+
 여러 테스트를 위해서 모든 컴포넌트가 포함된 demo profile로 설치한다.
 
 ```
