@@ -7,11 +7,11 @@ export default function Menu() {
         <Link href="/">
           <a className="font-bold text-2xl">JoJee</a>
         </Link>
-        {/* <nav className="flex justify-between">
+        <nav className="flex justify-between">
           <Link href="/about">
             <a>About</a>
           </Link>
-        </nav> */}
+        </nav>
       </div>
     </div>
   )
