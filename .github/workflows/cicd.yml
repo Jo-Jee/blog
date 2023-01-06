@@ -46,7 +46,7 @@ jobs:
         sed -i "s/$version/${{ needs.ci.outputs.tag }}/" $repo/values.dev.yaml
         git config user.name "GitHub Action Bot"
         git config user.email "<>"
-        git add 
+        git add .
         git push
     - name: Push chart
       run: |
