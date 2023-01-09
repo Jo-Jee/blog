@@ -37,9 +37,7 @@ export default function PostList({ tag }: { tag?: string }) {
 
   const handleEndOfPost = useCallback(
     ([entry]: IntersectionObserverEntry[]) => {
-      console.log('ho.. interesting')
       if (!isLoading && entry.isIntersecting) {
-        console.log('beam!!')
         setPage((prev) => prev + 1)
       }
     },
