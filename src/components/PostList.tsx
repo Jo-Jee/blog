@@ -1,43 +1,45 @@
-import axios from 'axios'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { FrontMatter } from 'src/interfaces'
 import PostTags from './PostTags'
+import Post from '@interfaces/Post'
+import api from '@utils/api'
 
 interface Response {
-  frontMatters: FrontMatter[]
-  total: number
+  content: Post[]
+  last: boolean
 }
 
-function PostRow({ frontMatter }: { frontMatter: FrontMatter }) {
+function PostRow({ post }: { post: Post }) {
   return (
     <li className="py-4">
-      <Link href={`/posts/${frontMatter.topic}/${frontMatter.id}`}>
+      <Link href={`/posts/${post.id}`}>
         <a className="group">
           <div className="text-3xl font-extrabold group-hover:underline">
-            {frontMatter.title}
+            {post.title}
           </div>
-          <div className="my-2">{frontMatter.summary}</div>
-          <div className="text-sm mb-4 text-slate-700">{frontMatter.date}</div>
+          <div className="my-2">{post.summary}</div>
+          <div className="text-sm mb-4 text-slate-700">{post.createdAt}</div>
         </a>
       </Link>
-      <PostTags tags={frontMatter.tags} />
+      <PostTags tags={post.tags} />
     </li>
   )
 }
 
 export default function PostList({ tag }: { tag?: string }) {
   const [postsData, setPostsData] = useState<Response>({
-    frontMatters: [],
-    total: 9999,
+    content: [],
+    last: false,
   })
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(-1)
   const [isLoading, setIsLoading] = useState(false)
   const target = useRef(null)
 
-  const handleEedOfPost = useCallback(
+  const handleEndOfPost = useCallback(
     ([entry]: IntersectionObserverEntry[]) => {
+      console.log('ho.. interesting')
       if (!isLoading && entry.isIntersecting) {
+        console.log('beam!!')
         setPage((prev) => prev + 1)
       }
     },
@@ -45,28 +47,29 @@ export default function PostList({ tag }: { tag?: string }) {
   )
 
   useEffect(() => {
-    if (page < 1) return
-    axios
-      .get('/api/posts', {
-        params: {
-          page: page,
-          tag: tag,
-        },
-      })
-      .then(async (res) => {
-        await setIsLoading(true)
-
-        setPostsData({
-          frontMatters: [...postsData.frontMatters, ...res.data.frontMatters],
-          total: res.data.total,
+    if (page < 0) return
+    if (!isLoading) {
+      setIsLoading(true)
+      api
+        .get<Response>('/posts', {
+          params: {
+            page: page,
+            size: 10,
+            tag: tag,
+          },
         })
-
-        setIsLoading(false)
-      })
+        .then(async (res) => {
+          setPostsData({
+            content: [...postsData.content, ...res.data.content],
+            last: res.data.last,
+          })
+        })
+        .finally(() => setIsLoading(false))
+    }
   }, [page])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(handleEedOfPost, {
+    const observer = new IntersectionObserver(handleEndOfPost, {
       threshold: 0,
       root: null,
     })
@@ -76,16 +79,18 @@ export default function PostList({ tag }: { tag?: string }) {
     return () => {
       observer.disconnect()
     }
-  }, [handleEedOfPost, target])
+  }, [handleEndOfPost, target, isLoading])
 
   return (
     <div className="container">
       <ul className="divide-y divide-slate-200">
-        {postsData.frontMatters.map((frontMatter) => {
-          return <PostRow frontMatter={frontMatter} key={frontMatter.id} />
+        {postsData.content.map((post) => {
+          return <PostRow post={post} key={post.id} />
         })}
       </ul>
-      {page < postsData.total ? <div ref={target} /> : null}
+      <div>{isLoading.toString()}</div>
+      <div>{page}</div>
+      {!postsData.last && !isLoading && <div ref={target} />}
     </div>
   )
 }
