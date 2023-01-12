@@ -9,6 +9,7 @@ jobs:
     uses: jo-jee/workflows/.github/workflows/k8s-cicd.yml@main
     with:
       repo: web-blog
+      chart: blog/web
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_PW: ${{ secrets.DOCKERHUB_PW }}
