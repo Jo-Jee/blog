@@ -86,8 +86,6 @@ export default function PostList({ tag }: { tag?: string }) {
           return <PostRow post={post} key={post.id} />
         })}
       </ul>
-      <div>{isLoading.toString()}</div>
-      <div>{page}</div>
       {!postsData.last && !isLoading && <div ref={target} />}
     </div>
   )
