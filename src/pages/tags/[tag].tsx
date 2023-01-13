@@ -2,16 +2,9 @@ import { GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import PostList from 'src/components/PostList'
 import api from 'src/utils/api'
-import { getAllTags } from 'src/utils/posts'
 
 interface Params extends ParsedUrlQuery {
   tag: string
-}
-
-interface PathResult {
-  params: {
-    tag: string
-  }
 }
 
 export default function TagPostPage({ tag }: { tag: string }) {
@@ -36,7 +29,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   }
 }
 
