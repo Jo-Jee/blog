@@ -1,7 +1,7 @@
 import PostList from 'src/components/PostList'
 import TagList from 'src/components/TagList'
 import { Tag } from 'src/interfaces'
-import { getAllTags } from 'src/utils/posts'
+import api from '@utils/api'
 
 export default function Home({ tags }: { tags: Tag[] }) {
   return (
@@ -12,12 +12,12 @@ export default function Home({ tags }: { tags: Tag[] }) {
   )
 }
 
-export function getStaticProps() {
-  const tags = getAllTags()
+export async function getStaticProps() {
+  const res = await api.get<Tag>('/tags')
 
   return {
     props: {
-      tags: tags,
+      tags: res.data,
     },
   }
 }
