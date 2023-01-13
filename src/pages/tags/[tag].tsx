@@ -1,6 +1,7 @@
 import { GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import PostList from 'src/components/PostList'
+import api from 'src/utils/api'
 import { getAllTags } from 'src/utils/posts'
 
 interface Params extends ParsedUrlQuery {
@@ -22,18 +23,16 @@ export default function TagPostPage({ tag }: { tag: string }) {
   )
 }
 
-export function getStaticPaths() {
-  const tags = getAllTags()
+export async function getStaticPaths() {
+  const res = await api.get<string[]>('/tags/names')
 
-  const paths = tags.reduce((result: PathResult[], tag) => {
-    if (tag.name)
-      result.push({
-        params: {
-          tag: tag.name,
-        },
-      })
-    return result
-  }, [])
+  const paths = res.data.map((tag) => {
+    return {
+      params: {
+        tag: tag,
+      },
+    }
+  })
 
   return {
     paths: paths,
