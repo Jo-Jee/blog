@@ -30,30 +30,3 @@ export function getAllPosts(): Post[] {
 
   return posts
 }
-
-export function getAllTags(): Tag[] {
-  const posts = getAllPosts()
-  const tagCountMap = new Map<string, number>()
-
-  posts.map((post) => {
-    post.frontMatter.tags.map((tag) => {
-      const tagCount = tagCountMap.get(tag)
-      tagCount ? tagCountMap.set(tag, tagCount + 1) : tagCountMap.set(tag, 1)
-    })
-  })
-
-  const tags: Tag[] = []
-  tagCountMap.forEach((value, key) => {
-    tags.push({
-      name: key,
-      count: value,
-    })
-  })
-
-  tags.sort((t1, t2) => {
-    if (t1.count < t2.count) return 1
-    return -1
-  })
-
-  return tags
-}

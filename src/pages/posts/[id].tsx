@@ -7,7 +7,9 @@ import remarkGfm from 'remark-gfm'
 import api from '@utils/api'
 import Post from '@interfaces/Post'
 
-export default function PostPage({ post }: { post: Post }) {
+export default function PostPage(props: any) {
+  const { post } = props
+  if (!post) return <div>Loading..</div>
   return (
     <>
       <Head>
@@ -56,6 +58,8 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
 
   try {
     const res = await api.get<Post>(`/posts/${id}`)
+
+    if (res.status != 200) throw Error()
 
     return {
       props: {
