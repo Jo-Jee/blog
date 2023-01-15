@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import PostListResponse from '@interfaces/PostListResponse'
 import api from '@utils/api'
 
 export default async function handler(
