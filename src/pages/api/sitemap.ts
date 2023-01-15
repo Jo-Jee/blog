@@ -1,17 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getAllPosts } from 'src/utils/posts'
+import PostListResponse from '@interfaces/PostListResponse'
+import api from '@utils/api'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   res.setHeader('Content-Type', 'text/xml')
 
-  const posts = getAllPosts()
+  const posts = await api.get<PostListResponse>('/posts')
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
                 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-                ${posts
+                ${posts.data.content
                   .map((post) => {
                     return `
                     <url>
-                        <loc>${`https://blog.jojee.co.kr/${post.frontMatter.id}`}</loc>
+                        <loc>${`https://blog.jojee.co.kr/${post.id}`}</loc>
                     </url>
                     `
                   })
