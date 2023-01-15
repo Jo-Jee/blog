@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import api from '@utils/api'
 import Post from '@interfaces/Post'
+import format from '@utils/timeago'
 
 export default function PostPage(props: any) {
   const { post } = props
@@ -23,7 +24,7 @@ export default function PostPage(props: any) {
         <div className="my-5">
           <PostTags tags={post.tags} />
         </div>
-        <p className="my-5 text-sm text-slate-700">{post.createdAt}</p>
+        <p className="my-5 text-sm text-slate-700">{format(post.createdAt)}</p>
         <div className="max-w-none prose">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
         </div>

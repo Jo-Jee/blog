@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import PostTags from './PostTags'
 import Post from '@interfaces/Post'
 import api from '@utils/api'
+import format from '@utils/timeago'
 
 interface Response {
   content: Post[]
@@ -18,7 +19,9 @@ function PostRow({ post }: { post: Post }) {
             {post.title}
           </div>
           <div className="my-2">{post.summary}</div>
-          <div className="text-sm mb-4 text-slate-700">{post.createdAt}</div>
+          <div className="text-sm mb-4 text-slate-700">
+            {format(post.createdAt)}
+          </div>
         </a>
       </Link>
       <PostTags tags={post.tags} />
