@@ -6,8 +6,10 @@ function TagRow({ tag }: { tag: Tag }) {
     <li className="py-1">
       <Link href={`/tags/${tag.name}`}>
         <a className="group text-xs">
-          <span className="rounded-l bg-slate-200 py-1 px-2">{tag.name}</span>
-          <span className="rounded-r bg-slate-100 py-1 px-2 my-2">
+          <span className="rounded-l bg-slate-200 dark:bg-stone-600 dark:text-white py-1 px-2">
+            {tag.name}
+          </span>
+          <span className="rounded-r bg-slate-100 dark:bg-stone-500 dark:text-white py-1 px-2 my-2">
             {tag.count}
           </span>
         </a>
