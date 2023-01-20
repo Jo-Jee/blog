@@ -7,6 +7,20 @@ module.exports = {
   theme: {
     extend: {
       typography: ({ theme }) => ({
+        invert: {
+          css: {
+            code: {
+              background: theme('colors.stone.500')
+            },
+            pre: {
+              code: {
+                background: 'inherit'
+              }
+            },
+            '--tw-prose-hr': theme('colors.stone.500'),
+            '--tw-prose-invert-bullets': theme('colors.stone.300')
+          }
+        },
         DEFAULT: {
           css: {
             'code::after': false,
@@ -18,7 +32,6 @@ module.exports = {
               'border-radius': '0.25rem',
               margin: 3
             }
-            // '--tw-prose-pre-code': theme('colors.black[300]')
           }
         }
       })
