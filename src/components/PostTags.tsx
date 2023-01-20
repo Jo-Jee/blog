@@ -7,7 +7,9 @@ export default function PostTags({ tags }: { tags: string[] }) {
         return (
           <Link href={`/tags/${tag}`} key={tag}>
             <a className="mx-1 first:ml-0">
-              <span className="bg-slate-200 rounded p-1 text-xs">{tag}</span>
+              <span className="rounded p-1 text-xs dark:bg-slate-100 bg-slate-200">
+                {tag}
+              </span>
             </a>
           </Link>
         )

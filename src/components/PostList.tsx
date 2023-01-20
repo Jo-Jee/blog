@@ -14,12 +14,12 @@ function PostRow({ post }: { post: Post }) {
   return (
     <li className="py-4">
       <Link href={`/posts/${post.id}`}>
-        <a className="group">
+        <a className="group dark:text-slate-100">
           <div className="text-3xl font-extrabold group-hover:underline">
             {post.title}
           </div>
           <div className="my-2">{post.summary}</div>
-          <div className="text-sm mb-4 text-slate-700">
+          <div className="text-sm mb-4 text-gray-700 dark:text-gray-300/80">
             {format(post.createdAt)}
           </div>
         </a>
@@ -84,7 +84,7 @@ export default function PostList({ tag }: { tag?: string }) {
 
   return (
     <div className="container">
-      <ul className="divide-y divide-slate-200">
+      <ul className="divide-y divide-slate-200 dark:divide-stone-500">
         {postsData.content.map((post) => {
           return <PostRow post={post} key={post.id} />
         })}

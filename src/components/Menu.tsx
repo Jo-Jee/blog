@@ -2,17 +2,17 @@ import Link from 'next/link'
 
 export default function Menu() {
   return (
-    <div className="border-b w-full bg-white">
-      <div className="flex justify-between p-5 max-w-4xl m-auto">
+    <header className="border-b dark:border-stone-500 w-full">
+      <nav className="flex justify-between p-5 max-w-4xl m-auto">
         <Link href="/">
-          <a className="font-bold text-2xl">JoJee</a>
+          <a className="font-bold text-2xl dark:text-white">JoJee</a>
         </Link>
-        <nav className="flex justify-between">
+        <div className="flex justify-between">
           <Link href="/about">
-            <a>About</a>
+            <a className="dark:text-white">About</a>
           </Link>
-        </nav>
-      </div>
-    </div>
+        </div>
+      </nav>
+    </header>
   )
 }

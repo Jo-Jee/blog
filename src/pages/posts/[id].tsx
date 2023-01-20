@@ -20,12 +20,16 @@ export default function PostPage(props: any) {
         <meta name="description" content={post.summary} />
       </Head>
       <div>
-        <h1 className="text-4xl font-black my-5">{post.title}</h1>
+        <h1 className="text-4xl font-black my-5 dark:text-white">
+          {post.title}
+        </h1>
         <div className="my-5">
           <PostTags tags={post.tags} />
         </div>
-        <p className="my-5 text-sm text-slate-700">{format(post.createdAt)}</p>
-        <div className="max-w-none prose">
+        <p className="my-5 text-sm text-gray-700 dark:text-gray-300/80">
+          {format(post.createdAt)}
+        </p>
+        <div className="max-w-none prose dark:prose-invert">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
         </div>
       </div>

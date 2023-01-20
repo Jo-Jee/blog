@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown'
 
 export default function AboutPage() {
   return (
-    <div className="max-w-none prose mt-5">
+    <div className="max-w-none mt-5 prose dark:prose-invert">
       <ReactMarkdown>{aboutMarkDown}</ReactMarkdown>
     </div>
   )

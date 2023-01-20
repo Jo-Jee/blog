@@ -2,11 +2,12 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <div className="border-t border-slate-200 flex flex-col space-y-2 py-5 mt-5 shrink-0">
+    <footer className="border-t border-slate-200 dark:border-stone-500 flex flex-col space-y-2 py-5 mt-5 shrink-0">
       <div className="flex space-x-1 max-w-4xl m-auto">
         <Link href="https://github.com/Jo-Jee">
           <a>
             <svg
+              className="fill-current dark:text-white"
               xmlns="http://www.w3.org/2000/svg"
               width="32px"
               height="32px"
@@ -20,8 +21,9 @@ export default function Footer() {
           </a>
         </Link>
         <Link href="mailto:capjjo@gmail.com">
-          <a>
+          <a className="dark:text-white">
             <svg
+              className="fill-current dark:text-white"
               xmlns="http://www.w3.org/2000/svg"
               width="32px"
               height="32px"
@@ -36,6 +38,6 @@ export default function Footer() {
           </a>
         </Link>
       </div>
-    </div>
+    </footer>
   )
 }
