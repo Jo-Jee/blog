@@ -13,6 +13,7 @@ module.exports = {
               background: theme('colors.stone.500')
             },
             pre: {
+              background: theme('colors.black'),
               code: {
                 background: 'inherit'
               }
