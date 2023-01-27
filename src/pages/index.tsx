@@ -11,7 +11,7 @@ export default function Home() {
     api.get<Tag[]>('/tags').then((res) => {
       setTags(res.data)
     })
-  })
+  }, [])
 
   return (
     <div className="flex justify-between">
