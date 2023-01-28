@@ -15,8 +15,8 @@ export default function Home() {
 
   return (
     <div className="flex justify-between">
-      <PostList />
       <TagList tags={tags} key={''} />
+      <PostList />
     </div>
   )
 }

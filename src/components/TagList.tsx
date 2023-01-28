@@ -20,7 +20,7 @@ function TagRow({ tag }: { tag: Tag }) {
 
 export default function TagList({ tags }: { tags: Tag[] }) {
   return (
-    <div className="ml-10 w-1/4">
+    <div className="mr-5 w-1/6">
       <h3 className="py-4 font-bold dark:text-white">Tags</h3>
       <ul>
         {tags.map((tag) => {
