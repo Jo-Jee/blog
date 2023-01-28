@@ -10,7 +10,7 @@ interface Params extends ParsedUrlQuery {
 export default function TagPostPage({ tag }: { tag: string }) {
   return (
     <div>
-      <h1 className="text-4xl font-bold mb-7"># {tag}</h1>
+      <h1 className="text-5xl font-bold py-7 dark:text-white"># {tag}</h1>
       <PostList tag={tag} key={tag} />
     </div>
   )
