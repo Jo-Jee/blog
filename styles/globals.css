@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tag {
+  @apply rounded p-1 text-xs bg-slate-200 dark:bg-stone-600 dark:text-white
+}
