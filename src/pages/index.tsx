@@ -1,6 +1,6 @@
 import PostList from 'src/components/PostList'
 import TagList from 'src/components/TagList'
-import { Tag } from 'src/interfaces'
+import Tag from '@interfaces/Tag'
 import api from '@utils/api'
 import { useEffect, useState } from 'react'
 

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Tag } from 'src/interfaces'
+import Tag from '@interfaces/Tag'
 
 function TagRow({ tag }: { tag: Tag }) {
   return (
