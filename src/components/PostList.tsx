@@ -20,7 +20,7 @@ function PostRow({ post }: { post: Post }) {
           </div>
           <div className="my-2">{post.summary}</div>
           <div className="text-sm mb-4 text-gray-700 dark:text-gray-300/80">
-            {format(post.createdAt)}
+            {format(post.publishedAt)}
           </div>
         </a>
       </Link>

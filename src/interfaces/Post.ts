@@ -5,6 +5,5 @@ export default interface Post {
   topicId: number
   tags: string[]
   body: string
-  createdAt: string
-  updatedAt: string
+  publishedAt: string
 }

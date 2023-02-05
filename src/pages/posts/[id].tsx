@@ -8,7 +8,7 @@ import api from '@utils/api'
 import Post from '@interfaces/Post'
 import format from '@utils/timeago'
 
-export default function PostPage(props: any) {
+export default function PostPage(props: { post: Post }) {
   const { post } = props
   if (!post) return <div>Loading..</div>
   return (
@@ -27,7 +27,7 @@ export default function PostPage(props: any) {
           <PostTags tags={post.tags} />
         </div>
         <p className="my-5 text-sm text-gray-700 dark:text-gray-300/80">
-          {format(post.createdAt)}
+          {format(post.publishedAt)}
         </p>
         <div className="max-w-none prose dark:prose-invert">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
