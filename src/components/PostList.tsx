@@ -19,8 +19,12 @@ function PostRow({ post }: { post: Post }) {
             {post.title}
           </div>
           <div className="my-2">{post.summary}</div>
-          <div className="text-sm mb-4 text-gray-700 dark:text-gray-300/80">
-            {format(post.publishedAt)}
+          <div className="flex text-xs my-1 text-gray-700 dark:text-gray-300/80">
+            <span className="flex text-gray-700 dark:text-gray-300/80">
+              조회수 {post.viewCount}회
+            </span>
+            <span className="mx-1">·</span>
+            <span>{format(post.publishedAt)}</span>
           </div>
         </a>
       </Link>

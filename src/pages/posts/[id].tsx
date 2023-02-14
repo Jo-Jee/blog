@@ -7,10 +7,25 @@ import remarkGfm from 'remark-gfm'
 import api from '@utils/api'
 import Post from '@interfaces/Post'
 import format from '@utils/timeago'
+import { useEffect, useState } from 'react'
 
 export default function PostPage(props: { post: Post }) {
   const { post } = props
+  const [viewCount, setViewCount] = useState(0)
+
+  useEffect(() => {
+    const key = `v-${post.id}`
+
+    if (localStorage.getItem(key) !== null) return
+
+    localStorage.setItem(key, '')
+    api.put<number>(`/posts/${post.id}/viewcount`).then((res) => {
+      setViewCount(res.data)
+    })
+  }, [])
+
   if (!post) return <div>Loading..</div>
+
   return (
     <>
       <Head>
@@ -26,9 +41,13 @@ export default function PostPage(props: { post: Post }) {
         <div className="my-5">
           <PostTags tags={post.tags} />
         </div>
-        <p className="my-5 text-sm text-gray-700 dark:text-gray-300/80">
-          {format(post.publishedAt)}
-        </p>
+        <div className="flex my-5 text-sm text-gray-700 dark:text-gray-300/80">
+          <span className="flex text-gray-700 dark:text-gray-300/80">
+            조회수 {viewCount ? viewCount : post.viewCount}회
+          </span>
+          <span className="mx-1">·</span>
+          <span>{format(post.publishedAt)}</span>
+        </div>
         <div className="max-w-none prose dark:prose-invert">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.body}</ReactMarkdown>
         </div>

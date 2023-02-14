@@ -6,4 +6,5 @@ export default interface Post {
   tags: string[]
   body: string
   publishedAt: string
+  viewCount: number
 }
