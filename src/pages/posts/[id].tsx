@@ -16,17 +16,16 @@ export default function PostPage(props: { post: Post }) {
   useEffect(() => {
     const key = `v-${post.id}`
 
-    if (localStorage.getItem(key) !== null) {
+    if (localStorage.getItem(key) === null) {
+      localStorage.setItem(key, '')
+      api.put<number>(`/posts/${post.id}/viewcount`).then((res) => {
+        setViewCount(res.data)
+      })
+    } else {
       api.get<number>(`/posts/${post.id}/viewcount`).then((res) => {
         setViewCount(res.data)
       })
-      return
     }
-
-    localStorage.setItem(key, '')
-    api.put<number>(`/posts/${post.id}/viewcount`).then((res) => {
-      setViewCount(res.data)
-    })
   }, [])
 
   if (!post) return <div>Loading..</div>
